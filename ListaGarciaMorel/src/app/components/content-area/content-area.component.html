@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="btn-group mar-ang" role="group" aria-label="Basic mixed styles example">
+      <button type="button" class="btn btn-danger" (click)="toRed()">Cambiar color a rojo</button>
+      <button type="button" class="btn btn-warning" (click)="toYellow()">Cambiar color a amarillo</button>
+      <button type="button" class="btn btn-success" (click)="toGreen()">Cambiar color a verde</button>
+      <button type="button" class="btn btn-secondary" (click)="toDefault()">Reestablecer</button>
+    </div>
+    <div class="row mb-3 text-center mar-ang" *ngFor="let item of listaAlumnos">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal" [ngClass]="txtStyle" >{{item}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
