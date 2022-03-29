@@ -5,13 +5,18 @@
       <button type="button" class="btn btn-success" (click)="toGreen()">Cambiar color a verde</button>
       <button type="button" class="btn btn-secondary" (click)="toDefault()">Reestablecer</button>
     </div>
-    <div class="row mb-3 text-center mar-ang" *ngFor="let item of listaAlumnos">
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal" [ngClass]="txtStyle" >{{item}}</h4>
-          </div>
-        </div>
-      </div>
-    </div>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Fecha Inscripcion</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of listaAlumnos">
+        <tr [ngClass]="txtStyle">
+          <td  >{{item.nombre}}</td>
+          <td >{{item.fecInscrip | date: 'dd/MM/yyyy'}}</td>
+        </tr>
+      </tbody>
+    </table>
 </div>
