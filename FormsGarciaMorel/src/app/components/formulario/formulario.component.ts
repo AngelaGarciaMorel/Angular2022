@@ -16,7 +16,7 @@ export class FormularioComponent implements OnInit {
 
     this.formularioAlumno = fb.group({
       nombre: new FormControl('', [Validators.required,Validators.minLength(3)]),
-      apellido: new FormControl('', [Validators.required,Validators.min(3)]),
+      apellido: new FormControl('', [Validators.required,Validators.minLength(3)]),
       fecNacimiento: new FormControl('', [Validators.required, Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/)]),
       mail:new FormControl('', [Validators.required,Validators.email]),
       direccion:new FormControl('', [Validators.required]),
