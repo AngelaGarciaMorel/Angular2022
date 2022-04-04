@@ -1,0 +1,124 @@
+<h1> Formulario carga de Alumnos</h1>
+<form [formGroup]="formularioAlumno" (ngSubmit)="guardarAlumno()">
+    <!-- NOMBRE -->
+    <mat-form-field >
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" class="form-control"  name="nombre">
+    </mat-form-field>
+    <!-- Validaciones nombre -->
+    <div *ngIf="formularioAlumno.get('nombre')!.invalid && 
+        formularioAlumno.get('nombre')!.errors && 
+        (formularioAlumno.get('nombre')!.dirty || formularioAlumno.get('nombre')!.touched)">
+        <small class="text-danger"
+            *ngIf="formularioAlumno.get('nombre')!.errors?.['required']">
+            El campo nombre es requerido
+        </small>
+        <small class="text-danger"
+            *ngIf="formularioAlumno.get('nombre')!.errors?.['minlength']">
+            La cantidad mínima del campo nombre es de 3 caracteres. 
+        </small>
+    </div>
+    <br>
+    <!-- APELLIDO -->
+    <mat-form-field >
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="apellido" class="form-control"  name="apellido">
+    </mat-form-field>
+    <!-- Validaciones apellido -->
+    <div *ngIf="formularioAlumno.get('apellido')!.invalid && 
+        formularioAlumno.get('apellido')!.errors && 
+        (formularioAlumno.get('apellido')!.dirty || formularioAlumno.get('apellido')!.touched)">
+        <small class="text-danger"
+            *ngIf="formularioAlumno.get('apellido')!.errors?.['required']">
+            El campo nombre es requerido
+        </small>
+        <small class="text-danger"
+            *ngIf="formularioAlumno.get('apellido')!.errors?.['minlength']">
+            La cantidad mínima del campo nombre es de 3 caracteres. 
+        </small>
+    </div>
+    <br>
+    <!-- Fecha de Nacimiento -->
+    <mat-form-field >
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input matInput formControlName="fecNacimiento" class="form-control"  name="fecNacimiento">
+    </mat-form-field>
+    <!-- Validaciones fecNacimiento -->
+    <div *ngIf="formularioAlumno.get('fecNacimiento')!.invalid && 
+        formularioAlumno.get('fecNacimiento')!.errors && 
+        (formularioAlumno.get('fecNacimiento')!.dirty || formularioAlumno.get('fecNacimiento')!.touched)">
+        <small class="text-danger"
+            *ngIf="formularioAlumno.get('fecNacimiento')!.errors?.['required']">
+            El campo fecha de Nacimiento es requerido
+        </small>
+        <small class="text-danger"
+            *ngIf="formularioAlumno.get('fecNacimiento')!.errors?.['pattern']">
+            El campo fecha no cumple con el formato dd/mm/yyyy
+        </small>
+    </div>
+    <br>    
+    <!-- MAIL -->
+    <mat-form-field >
+        <input matInput placeholder="mail" formControlName="mail" class="form-control"  name="mail">
+    </mat-form-field>
+    <!-- Validaciones mail -->
+    <div *ngIf="formularioAlumno.get('mail')!.invalid && 
+        formularioAlumno.get('mail')!.errors && 
+        (formularioAlumno.get('mail')!.dirty || formularioAlumno.get('mail')!.touched)">
+        <small class="text-danger"
+            *ngIf="formularioAlumno.get('mail')!.hasError('required')">
+            El campo mail es requerido
+        </small>
+        <small class="text-danger"
+            *ngIf="formularioAlumno.get('mail')!.hasError('email')">
+            No cumple con el formato de mail, ejemplo a@gmail.com
+        </small>
+    </div>
+    <br>
+    <!-- DIRECCION -->
+    <mat-form-field >
+        <mat-label>Direccion</mat-label>
+        <input matInput formControlName="direccion" class="form-control"  name="direccion">
+    </mat-form-field>
+    <!-- Validaciones direccion -->
+    <div *ngIf="formularioAlumno.get('direccion')!.invalid && 
+        formularioAlumno.get('direccion')!.errors && 
+        (formularioAlumno.get('direccion')!.dirty || formularioAlumno.get('direccion')!.touched)">
+        <small class="text-danger"
+            *ngIf="formularioAlumno.get('direccion')!.errors?.['required']">
+            El campo direccion es requerido
+        </small>
+        <small class="text-danger"
+            *ngIf="formularioAlumno.get('direccion')!.errors?.['minlength']">
+            La cantidad mínima del campo direccion es de 3 caracteres. 
+        </small>
+    </div>
+    <br>
+    <!-- TELEFONO -->
+    <mat-form-field >
+        <mat-label>Teléfono</mat-label>
+        <input matInput formControlName="telefono" class="form-control"  name="telefono">
+    </mat-form-field>
+    <!-- Validaciones telefono -->
+    <div *ngIf="formularioAlumno.get('telefono')!.invalid && 
+        formularioAlumno.get('telefono')!.errors && 
+        (formularioAlumno.get('telefono')!.dirty || formularioAlumno.get('telefono')!.touched)">
+        <small class="text-danger"
+            *ngIf="formularioAlumno.get('telefono')!.errors?.['required']">
+            El campo telefono es requerido
+        </small>
+        <small class="text-danger"
+            *ngIf="formularioAlumno.get('telefono')!.errors?.['pattern']">
+            El campo fecha no cumple con el formato numerico
+        </small>
+    </div>  
+    <div>
+        <button mat-flat-button color="primary" [disabled]="formularioAlumno.invalid">Agregar Alumno</button>
+    </div> 
+</form>
+
+<div class="row">
+    <ul class="list">
+        <li *ngFor="let item of listaAlumnos">{{item.nombre}} {{item.apellido}} {{item.fecNacimiento}} {{item.mail}} {{item.direccion}} {{item.telefono}}</li>
+    </ul>
+</div>
