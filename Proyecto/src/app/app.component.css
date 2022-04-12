@@ -1,0 +1,19 @@
+.grid-header {
+    grid-area: header;
+}
+.grid-content-header {
+    grid-area: c-header;
+}
+.grid-content-footer {
+    grid-area: footer;
+}
+.grid-nav {
+    grid-area: nav;
+}
+.grid-container{
+  display: grid;
+  grid-template-areas: 
+  'header header header header header header'
+  'nav   c-header   c-header   c-header   c-header   c-header  '
+  'nav   footer   footer   footer   footer   footer ';
+}

@@ -1,0 +1,24 @@
+<div class="container">
+  <button mat-flat-button color="accent" (click)="mostrarFormAgregarAlumno()">Agregar Alumno</button>
+  <button mat-flat-button color="link" (click)="ocultarFormAgregarAlumno()">Cancelar</button>
+</div>
+<div class="container">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" appTam20>Nombre</th>
+          <th scope="col" appTam20>Fecha Inscripcion</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of listaAlumnos">
+        <tr >
+          <td  >{{ item.nombre  | concatenar:item.apellido }}</td>
+          <td >{{item.fecInscrip | date: 'dd/MM/yyyy'}}</td>
+          <button mat-flat-button color="primary"  (click)="modificar(item.id)">Modificar</button>
+          <button mat-flat-button color="warn"  (click)="eliminarAlumno(item.id)">Eliminar</button>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<app-formulario *ngIf="mostrarComponente" (onSave)="agregarAlumno($event)" (onChange)="modificarAlumno($event)"  [alumnoModificado]="alumnoModificado" class="grid-content-footer"></app-formulario>
